@@ -1,0 +1,5 @@
+torch
+torchvision
+img2vec_pytorch
+yaml
+pillow

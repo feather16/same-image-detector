@@ -1,0 +1,5 @@
+# 検索のルートディレクトリ
+root_dir_path: /path/to/root_directory
+
+# コサイン類似度の閾値
+cossim_threshold: 0.96
