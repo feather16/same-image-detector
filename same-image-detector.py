@@ -20,12 +20,13 @@ def is_image_path(path) -> bool:
     return suffix in ['.png', '.jpg'] # とりあえずpngとjpg
 
 # 検索対象ディレクトリの列挙
+def get_directory_paths(root_dir_path: Path) -> list[Path]:
+    directory_paths = [root_dir_path]
+    for dir in [p for p in root_dir_path.iterdir() if p.is_dir()]:
+        directory_paths.extend(get_directory_paths(dir))
+    return directory_paths
 root_dir_path = Path(settings['root_dir_path'])
-directory_paths = [root_dir_path]
-i = 0
-while i < len(directory_paths):
-    directory_paths += [p for p in directory_paths[i].iterdir() if p.is_dir()]
-    i += 1
+directory_paths = get_directory_paths(root_dir_path)
 
 # 検索
 print('')
